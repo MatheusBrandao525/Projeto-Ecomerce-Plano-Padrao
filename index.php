@@ -4,9 +4,9 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html lang="">
+<html translate="no">
 	<head>
-		<title>Space Info</title>
+		<title>Space info</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
@@ -22,13 +22,13 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Space info</a></h1>
+							<h1 id="logo"><a href="index.php" translate="no">Space info</a></h1>
 							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
+									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
@@ -46,9 +46,9 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.html"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-cog" href="no-sidebar.html"><span>Entrar</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
 
@@ -66,13 +66,14 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/Gabinete-Gamer.jpg" alt="" /></a>
+										<a href="detalhes.php" class="image featured"><img src="images/gabinete.jpg" alt="" /></a>
 										<header>
-											<h3>Pc gamer completo!</h3>
+											<h3>Gabinete Gamer</h3>
 										</header>
-										<p>Só na <strong>Space info</strong>, processador I5 11400f, 16Gb RAM, placa de Video 8Gb de VRAM.</p>
-										<h4>R$ 00,00</h4>
-										<a href="#" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
+										<h4><del>R$ 650,00</del></h4>
+										<h4>R$ 500,00</h4>
+										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 
 							</div>
@@ -80,40 +81,11 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/OIP.jpg" alt="" /></a>
+										<a href="detalhes.php" class="image featured"><img src="images/teclado.jpg" alt="" /></a>
 										<header>
-											<h3>HeadSet Gamer</h3>
+											<h3>Teclado Mecanico</h3>
 										</header>
-										<p>O melhor quando se trata de HeadSets para jogos, extrema qualidade e sensação de son ambiente.</p>
-										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/mouse-gamer.jpg" alt="" /></a>
-										<header>
-											<h3>Mouse gamer</h3>
-										</header>
-										<p>O melhor desempenho para jogos, o mouse da "marca" te oferece a melhor qualidade no que à de tecnologia...</p>
-										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/Gabinete-Gamer.jpg" alt="" /></a>
-										<header>
-											<h3>Pc gamer completo!</h3>
-										</header>
-										<p>Só na <strong>Space info</strong>, processador I5 11400f, 16Gb RAM, placa de Video 8Gb de VRAM.</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
 										<h4>R$ 00,00</h4>
 										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
@@ -123,27 +95,28 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/OIP.jpg" alt="" /></a>
-										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
-										</header>
-										<p>O melhor quando se trata de HeadSets para jogos, extrema qualidade e sensação de son ambiente.</p>
-										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/mouse-gamer.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/mouse.jpg" alt="" /></a>
 										<header>
 											<h3>Mouse Gamer</h3>
 										</header>
-										<p>O melhor desempenho para jogos, o mouse da "marca" te oferece a melhor qualidade no que à de tecnologia...</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
 										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+									</section>
+
+							</div>
+
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/munitor.jpg" alt="" /></a>
+										<header>
+											<h3>Munitor Gamer</h3>
+										</header>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
+										<h4>R$ 00,00</h4>
+										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 
 							</div>
@@ -151,13 +124,13 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/Gabinete-Gamer.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/processador.jpg" alt="" /></a>
 										<header>
-											<h3>Pc gamer completo!</h3>
+											<h3>Processadar i9</h3>
 										</header>
-										<p>Só na <strong>Space info</strong>, processador I5 11400f, 16Gb RAM, placa de Video 8Gb de VRAM.</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
 										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 
 							</div>
@@ -165,13 +138,13 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/OIP.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/placa-video.jpg" alt="" /></a>
 										<header>
-											<h3>Nice! What is HTML5 UP?</h3>
+											<h3>Placa de video</h3>
 										</header>
-										<p>O melhor quando se trata de HeadSets para jogos, extrema qualidade e sensação de son ambiente.</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
 										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 
 							</div>
@@ -179,13 +152,41 @@
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/mouse-gamer.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/fone.jpg" alt="" /></a>
 										<header>
-											<h3>Mouse gamer</h3>
+											<h3>headset gamer</h3>
 										</header>
-										<p>O melhor desempenho para jogos, o mouse da "marca" te oferece a melhor qualidade no que à de tecnologia...</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
 										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw "><i class="fab fa-whatsapp"></i> Entre em contato</a>
+										<a href="https://web.whatsapp.com/send?phone=5569984634990" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+									</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/ssd.jpg" alt="" /></a>
+										<header>
+											<h3>Ssd 480gb</h3>
+										</header>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
+										<h4>R$ 00,00</h4>
+										<a href="https://web.whatsapp.com/send?phone=5569993479744" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+									</section>
+
+							</div>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/fonte.jpg" alt="" /></a>
+										<header>
+											<h3>Fonte 500w</h3>
+										</header>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
+										<h4>R$ 00,00</h4>
+										<a href="https://web.whatsapp.com/send?phone=5569993075526" target="_blank" class="buttonw "><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 
 							</div>
@@ -193,7 +194,7 @@
 
 							<div class="col-12">
 								<ul class="actions">
-									<li><a href="left-sidebar.html" class="button icon solid fa-file">Ver mais Produtos</a></li>
+									<li><a href="left-sidebar.php" class="button icon solid fa-file">Ver mais Produtos</a></li>
 								</ul>
 							</div>
 						</div>
@@ -222,12 +223,12 @@
 											</header>
 											<a href="#" class="image featured"><img src="images/original.jpeg" alt="" /></a>
 											<h3>Extremo profissionalismo!</h3>
-											<p>Manutenção de qualidade para seu computador, limpeza, formatação, te damos as melhores dicas para montar 
-											   PC gamer ideal, concertamos sua impresorra e damos garantia dos nossos serviços.</p>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
 											<ul class="actions">
-												<li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
+												<li><a href="right-sidebar.html" class="button icon solid fa-file">Ver mais</a></li>
 											</ul>
 										</article>
+										
 
 									<!-- Post -->
 										<article class="box post">

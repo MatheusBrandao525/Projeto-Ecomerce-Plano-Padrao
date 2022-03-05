@@ -22,13 +22,13 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Space info</a></h1>
+							<h1 id="logo"><a href="index.php">Space info</a></h1>
 							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
+									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
@@ -46,9 +46,9 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.html"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-cog" href="no-sidebar.html"><span>Entrar</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
 
@@ -65,7 +65,7 @@
 									<header>
 										<h2>Faça login</h2>
 									</header>
-									<form method="post" action="#" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+									<form method="post" action="verificauser.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
 										<div class="row gtr-50">
 											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
 												<input name="name" placeholder="Name" type="text" style="max-width: 350px;" />
@@ -77,7 +77,7 @@
 												<input type="password" name="message" placeholder="Digite sua senha" style="max-width: 350px;"></input>
 											</div>
 											<div class="col-12">
-												<a href="#" class="form-button-submit button icon solid fa-cog">Entrar</a>
+												<input type="submit" class="form-button-submit button icon solid fa-cog" value="Entrar"></input>
 											</div>
 										</div>
 									</form>

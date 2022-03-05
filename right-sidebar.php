@@ -4,9 +4,9 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html translate="no">
 	<head>
-		<title>Right Sidebar - Strongly Typed by HTML5 UP</title>
+		<title>Space info</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -19,13 +19,13 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Space info</a></h1>
+							<h1 id="logo"><a href="index.php">Space info</a></h1>
 							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Home</span></a></li>
+									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
 										<a href="#" class="icon fa-chart-bar"><span>Categorias</span></a>
 										<ul>
@@ -43,9 +43,9 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>Entrar</span></a></li>
+									<li><a class="icon solid fa-cog" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-sitemap" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
 
@@ -63,10 +63,9 @@
 									<!-- Post -->
 										<article class="box post">
 											<header>
-												<h2>Behold! This is the <strong>right sidebar</strong> layout<br />
-												with a sidebar on the right!</h2>
+												<h2>Montagem, formatação e manutenção de computadores e impresoras em geral.</h2>
 											</header>
-											<span class="image featured"><img src="images/pic04.jpg" alt="" /></span>
+											<span class="image featured"><img src="images/original.jpeg" alt="" /></span>
 											<h3>Right is also not left</h3>
 											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
 											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
@@ -114,21 +113,7 @@
 											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
 											Curabitur leo nibh, rutrum eu malesuada in tristique</p>
 											<h3>Ligula suspcipit fusce veroeros</h3>
-											<p>Nullam dolore etiam sed massa id in, tristique at erat lorem
-											ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna.</p>
-											<p>Sed massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan.</p>
+											<a href="https://web.whatsapp.com/send?phone=" target="_blank" class="buttonw "><i class="fab fa-whatsapp"></i> Entre em contato</a>
 										</article>
 
 								</div>
@@ -300,7 +285,7 @@
 					</div>
 					<div id="copyright" class="container">
 						<ul class="links">
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; Untitled. All rights reserved.</li><li>Desenvolvedor: <a href="http://html5up.net">Matheus F. Brandão</a></li>
 						</ul>
 					</div>
 				</section>
