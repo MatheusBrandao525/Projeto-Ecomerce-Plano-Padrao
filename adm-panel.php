@@ -1,3 +1,13 @@
+<?php 
+
+	session_start();
+	include "conexao.php";
+
+	if(empty($_SESSION["ID"])){
+		header('location:index.php');
+	}
+
+?>
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -21,6 +31,7 @@
 				<section id="header" style="max-height:100px;">
 					<div class="container" style="max-height:100px;">
 						<!-- Nav -->
+						<?php if(empty($_SESSION['ID'])) { ?>
 							<nav id="nav">
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
@@ -46,11 +57,38 @@
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
-
+						<?php } else{ ?>
+							<nav id="nav">
+								<ul>
+									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
+									<li>
+										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<ul>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
+										</ul>
+									</li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
+									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
+								</ul>
+							</nav>
+						<?php } ?>
 					</div>
 				</section>
 
-			<!-- Main -->
+                <!-- Main -->
 				<section id="main">
 					<div class="container">
 						<div id="content">
@@ -58,24 +96,21 @@
 							<!-- Post -->
 								<article class="box post">
 									<header>
-										<h2>Faça login</h2>
+										<h2>Olá ADM!</h2>
 									</header>
-									<form name="frmusuario" method="post" action="validauser.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+									<div class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
 										<div class="row gtr-50">
 											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtnome" placeholder="Nome" type="text" style="max-width: 350px;" required/>
+                                                <a href="cadastrar-produto.php" class="button icon solid fa-cog" style="min-width:300px;">Cadastrar Produtos</a>											
 											</div>
 											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtemail" placeholder="Email" type="email" style="max-width: 350px;" required/>
+                                                <a href="alterar-produto.php" class="button icon solid fa-cog" style="min-width:300px;">Alterar Produtos</a>											
 											</div>
 											<div class="col-12" style="display: flex; justify-content: center;">
-												<input type="password" name="txtsenha" placeholder="Digite sua senha" style="max-width: 350px;" required></input>
-											</div>
-											<div class="col-12">
-												<input type="submit" class="form-button-submit button icon solid fa-cog" value="Entrar"></input>
+                                                <a href="index.php" class="button icon solid fa-cog" style="min-width:300px;">Voltar</a>
 											</div>
 										</div>
-									</form>
+									</div>
 								</article>
 
 						</div>
@@ -83,7 +118,7 @@
 				</section>
 
 			<!-- Footer -->
-				<section id="footer">
+            <section id="footer">
 					<div class="container">
 						<header>
 							<h2>Questões ou comentarios? <strong>Entre em contato:</strong></h2>
@@ -91,7 +126,7 @@
 						<div class="row">
 							<div class="col-6 col-12-medium">
 								<section>
-									<form method="post" action="validaUser.php">
+									<form method="post" action="#">
 										<div class="row gtr-50">
 											<div class="col-6 col-12-small">
 												<input name="name" placeholder="Name" type="text" />
@@ -169,4 +204,4 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
-</html>
+</html>              

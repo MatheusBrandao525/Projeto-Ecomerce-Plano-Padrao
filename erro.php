@@ -41,7 +41,7 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Promoção</span></a></li>
 									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
@@ -50,7 +50,7 @@
 					</div>
 				</section>
 
-			<!-- Main -->
+                			<!-- Main -->
 				<section id="main">
 					<div class="container">
 						<div id="content">
@@ -58,24 +58,9 @@
 							<!-- Post -->
 								<article class="box post">
 									<header>
-										<h2>Faça login</h2>
+										<h2>Somente pessoal autorizado!</h2>
+                                        <a href="index.php" class="button icon solid fa-file">Voltar</a>
 									</header>
-									<form name="frmusuario" method="post" action="validauser.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
-										<div class="row gtr-50">
-											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtnome" placeholder="Nome" type="text" style="max-width: 350px;" required/>
-											</div>
-											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtemail" placeholder="Email" type="email" style="max-width: 350px;" required/>
-											</div>
-											<div class="col-12" style="display: flex; justify-content: center;">
-												<input type="password" name="txtsenha" placeholder="Digite sua senha" style="max-width: 350px;" required></input>
-											</div>
-											<div class="col-12">
-												<input type="submit" class="form-button-submit button icon solid fa-cog" value="Entrar"></input>
-											</div>
-										</div>
-									</form>
 								</article>
 
 						</div>

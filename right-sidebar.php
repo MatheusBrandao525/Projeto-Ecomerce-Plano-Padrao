@@ -1,10 +1,18 @@
+<?php 
+
+	session_start();
+	include "conexao.php";
+
+
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html translate="no">
+<html lang="pt-br" translate="no">
 	<head>
 		<title>Space info</title>
 		<meta charset="utf-8" />
@@ -21,13 +29,19 @@
 						<!-- Logo -->
 							<h1 id="logo"><a href="index.php">Space info</a></h1>
 							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
-
+							<div class="buscar">
+								<form action="busca.php" method="get">
+									<input type="search" placeholder="BUSCAR PRODUTOS...">
+									<button class="buttonww" >Buscar</button>
+								</form>
+							</div>
 						<!-- Nav -->
+						<?php if(empty($_SESSION['ID'])) { ?>
 							<nav id="nav">
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon fa-chart-bar"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
 											<li><a href="#">Lorem ipsum dolor</a></li>
 											<li><a href="#">Magna phasellus</a></li>
@@ -43,11 +57,39 @@
 											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
 									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.php"><span>Entrar</span></a></li>
+									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
+						<?php } else{ ?>
+							<nav id="nav">
+								<ul>
+									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
+									<li>
+										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<ul>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
+										</ul>
+									</li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
+									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
+								</ul>
+							</nav>
+						<?php } ?>
 
 					</div>
 				</section>
