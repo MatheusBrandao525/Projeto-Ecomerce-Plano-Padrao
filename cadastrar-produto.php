@@ -7,6 +7,9 @@
 		header('location:index.php');
 	}
 
+$consultaCat = $cn->query("select * from tbl_categoria");
+$listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
+
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -38,18 +41,6 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -64,18 +55,6 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -98,48 +77,64 @@
 									<header>
 										<h2>Cadastrar Produto</h2>
 									</header>
-									<form name="frmusuario" method="post" action="inserir_produto.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+									<form name="frmusuario" method="post" enctype="multipart/form-data" action="inserir_produto.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
 										<div class="row gtr-50">
-											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtnomeproduto" placeholder="Nome" type="text" style="max-width: 350px;" required />
-											</div>
-                                            <div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<select name="selectcat" style="max-width: 350px;" id="">
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Selecione</option>
-                                                    
-                                                </select>
-											</div>
-											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<textarea name="txtdescricao" placeholder="Descrição..." style="max-width: 350px; type="" required /></textarea>
-											</div>
+											<div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Digite o nome do produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<input name="txtnomeproduto" placeholder="Nome" type="text" style="max-width: 350px;" required />
+												</div>
+
+											<div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Selecione a categoria do produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<select name="selectcat" style="max-width: 350px;" id="">
+														<option value="">Selecione</option>
+													<?php while($listaCat = $consultaCat -> fetch(PDO::FETCH_ASSOC)) { ?>
+														<option value="<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></option>
+													<?php } ?>
+														
+													</select>
+												</div>
+
+											<div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Insira uma descrição para o produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<textarea name="txtdescricao" placeholder="Descrição..." style="max-width: 350px; type="" required /></textarea>
+												</div>
+
                                             <div class="col-12" style="display: flex; justify-content: center;">
                                                 <h6>Selecione três imagens para seu produto!</h6>
                                             </div>
-											<div class="col-12" style="display: flex; justify-content: center;">
-												<input type="file" name="imagem" style="max-width: 350px;" required></input>
-											</div>
-                                            <div class="col-12" style="display: flex; justify-content: center;">
-												<input type="file" name="imagem" style="max-width: 350px;" required></input>
-											</div>
-                                            <div class="col-12" style="display: flex; justify-content: center;">
-												<input type="file" name="imagem" style="max-width: 350px;" required></input>
-											</div>
+												<div class="col-12" style="display: flex; justify-content: center;">
+													<input type="file" accept="image/*" name="txtimagem" style="max-width: 350px;" required></input>
+												</div>
+
+												<div class="col-12" style="display: flex; justify-content: center;">
+													<input type="file" accept="image/*" name="txtimagemdois" style="max-width: 350px;" required></input>
+												</div>
+
+												<div class="col-12" style="display: flex; justify-content: center;">
+													<input type="file" accept="image/*" name="txtimagemtres" style="max-width: 350px;" required></input>
+												</div>
+
                                             <div class="col-12" style="display: flex; justify-content: center;">
                                                 <h6>Quantidade em estoque</h6>
                                             </div>
-                                            <div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtqnt" style="min-width: 50px; max-width: 100px; padding-left:10px;" placeholder="Estoque" type="number" min="1" style="max-width: 350px;" required />
-											</div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<input name="txtqnt" style="min-width: 50px; max-width: 100px; padding-left:10px;" placeholder="Estoque" type="number" min="1" style="max-width: 350px;" required />
+												</div>
+
                                             <div class="col-12" style="display: flex; justify-content: center;">
                                                 <h6>Valor do Produto</h6>
                                             </div>
-                                            <div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-												<input name="txtqnt" style="min-width: 50px; max-width: 100px; padding-left:10px;" placeholder="00,00" type="number" min="1" style="max-width: 350px;" required />
-											</div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<input name="txtvalor" id="preco" style="min-width: 50px; max-width: 100px; padding-left:10px;" placeholder="00,00" type="text" min="1" style="max-width: 350px;" required />
+												</div>
+
 											<div class="col-12">
 												<input type="submit" class="form-button-submit button icon solid fa-cog" style="min-width: 350px;" value="Cadastrar"></input>
 											</div>
@@ -240,6 +235,15 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.mask.js"></script>
+
+			<script>
+
+				$(document).ready(function(){
+					$('#preco').mask('000.000.000.000.000,00', {reverse: true});
+				});
+
+			</script>
 
 	</body>
 </html>                

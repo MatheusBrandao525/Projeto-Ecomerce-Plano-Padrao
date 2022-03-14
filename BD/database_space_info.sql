@@ -61,4 +61,20 @@ grant all privileges on db_space_info.* to 'Matheusb'@'localhost' with grant opt
 insert into tbl_usuario 
 values(default,'Matheus Felipe','Brandão','03600717243','mafe123silva@gmail.com','exagon10','1','Br 429 km90','São Francisco','76935000','993203891');
 
+insert into tbl_categoria
+values(default,'Gabinetes'),
+(default,'Processadores'),
+(default,'Placas Mãe'),
+(default,'Placa de Video'),
+(default,'Coolers'),
+(default,'Mouse'),
+(default,'Teclados'),
+(default,'HeadSet'),
+(default,'Mouse-pad'),
+(default,'Armazenamento');
+
+select * from tbl_categoria;
+
+select * from tbl_produto;
+
 select * from tbl_usuario;

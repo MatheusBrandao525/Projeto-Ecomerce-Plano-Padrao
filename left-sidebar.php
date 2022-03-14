@@ -30,7 +30,7 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.php">Space info</a></h1>
+							<h1 id="logo" style="margin-top:-55px;"><a href="index.php">Space info</a></h1>
 							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
 							<div class="buscar">
 								<form action="busca.php" method="get">

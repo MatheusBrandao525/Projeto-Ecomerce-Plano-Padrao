@@ -1969,19 +1969,31 @@ input, select, textarea {
 		position: relative;
 		background: #fff;
 		text-align: center;
+		background-image: url("images/fundo-de-formas.webp");
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 
 		#header > .container {
 			padding: 14em 0 7em 0;
 			border-bottom: solid 2px #e5e5e5;
 			box-shadow: inset 0px -8px 0px 0px #fff, inset 0px -10px 0px 0px #e5e5e5;
+			justify-content: center;
+		}
+
+		.fundo{
+			background-image: url("images/R\ \(1\).png");
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center
+
 		}
 
 		#header h1 {
 			font-family: 'Arvo';
 			font-weight: 700;
-			color: #ed786a;
-			text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.1);
+			color: #ffffff;
+			text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.9);
 			font-size: 3em;
 			letter-spacing: 13px;
 		}
@@ -1990,10 +2002,24 @@ input, select, textarea {
 				border: 0;
 			}
 
+
+		.blur{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.blur>.paragrafo{
+			width: 550px;
+			background-color: rgba(0, 0, 0, 0.7);
+			border-radius: 4px;
+		}
+
 		#header p {
 			text-transform: uppercase;
 			font-weight: 400;
-			color: #888;
+			color: rgb(238, 237, 237);
 			margin: 2.5em 0 0 0;
 			font-size: 0.85em;
 			letter-spacing: 3px;
@@ -2024,15 +2050,15 @@ input, select, textarea {
 				text-decoration: none;
 				text-transform: uppercase;
 				font-weight: 400;
-				color: #777;
+				color: rgb(128, 125, 125);
 				outline: 0;
 				display: block;
 			}
 
 				#nav > ul > li > a:before {
 					display: inline-block;
-					background: #878787;
-					color: #e4e4e4;
+					background: #747373;
+					color: #dcdcdc;
 					width: 2.25em;
 					font-size: 0.8em;
 					height: 2.25em;
@@ -2055,6 +2081,10 @@ input, select, textarea {
 					-ms-transition: color 0.25s ease-in-out;
 					transition: color 0.25s ease-in-out;
 					font-size: 0.85em;
+					background: rgba(255, 255, 255, 0.7);
+					border-radius: 5px;
+					color: #161616;
+					font-weight: 800;
 					letter-spacing: 3px;
 				}
 

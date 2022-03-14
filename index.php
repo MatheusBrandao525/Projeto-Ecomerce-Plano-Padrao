@@ -3,6 +3,7 @@
 	session_start();
 	include "conexao.php";
 	
+	$consultaCat = $cn->query("select * from tbl_categoria");
 
 ?>
 <!DOCTYPE HTML>
@@ -26,11 +27,15 @@
 
 			<!-- Header -->
 				<section id="header">
-					<div class="container">
+					<div class="container fundo">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.php" translate="no">Space info</a></h1>
-							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
+							<div class="blurr">
+								<h1 id="logo" style="margin-top:-55px;" class="titulo"><a href="index.php" translate="no">Space info</a></h1>
+							</div>
+							<div class="blur">
+								<p class="paragrafo">Acessorios para PC Gamer, peças e assistencia tecnica.</p>
+							</div>
 							<div class="buscar">
 								<form action="busca.php" method="get">
 									<input type="search" placeholder="BUSCAR PRODUTOS...">
@@ -45,18 +50,9 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
+											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="#"><?php echo $listaCat['nome_categoria'];?></a></li>
+											<?php } ?>	
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -71,18 +67,9 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
+										<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="#"><?php echo $listaCat['nome_categoria'];?></a></li>
+											<?php } ?>	
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -113,8 +100,7 @@
 											<h3>Gabinete Gamer</h3>
 										</header>
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4><del>R$ 650,00</del></h4>
-										<h4>R$ 500,00</h4>
+										<h4>R$ 00,00</h4>
 										<a href="https://web.whatsapp.com/send?phone=556984481680" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 
