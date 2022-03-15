@@ -1788,6 +1788,9 @@ input, select, textarea {
 
 	.buscar{
 		padding-top: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.buscar>form>input{
 		min-width: 450px;
@@ -2001,7 +2004,6 @@ input, select, textarea {
 			#header h1 a {
 				border: 0;
 			}
-
 
 		.blur{
 			width: 100%;
@@ -2340,6 +2342,11 @@ input, select, textarea {
 			body, input, textarea, select {
 				font-size: 13pt;
 			}
+			.alterarprod{
+				display: flex;
+				justify-content: space-between;
+			}
+
 
 	}
 
@@ -2358,6 +2365,10 @@ input, select, textarea {
 			}
 
 		/* Image */
+		.alterarprod{
+			display: flex;
+		}
+
 
 			.image.left {
 				max-width: 50%;
@@ -2439,6 +2450,20 @@ input, select, textarea {
 			}
 
 		/* Header */
+
+		.ouvaiouracha{
+			display: flex;
+			justify-content: center;
+		}
+
+		.alterarprod{
+			display: flex;
+		}
+
+		.vai{
+			margin-right: 10px;
+		}
+
 
 			#header > .container {
 				padding: 10em 0 7em 0;
@@ -2658,6 +2683,26 @@ input, select, textarea {
 				}
 
 		/* Image */
+		.ouvaiouracha{
+			display: flex;
+			justify-content: center;
+
+		}
+
+		.rowaltera{
+			display: block;
+			text-align: center;
+			margin-left: 70px;
+		}
+		.alterarprod{
+			display: block;
+			text-align: center;
+		}
+
+		.receba>.afasta{
+			margin-right: 15px;
+		}
+
 
 			.image.featured {
 				margin: 0 0 1.5em 0;

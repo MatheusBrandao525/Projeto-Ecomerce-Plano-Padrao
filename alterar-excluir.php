@@ -3,9 +3,15 @@
 	session_start();
 	include "conexao.php";
 
-	if(empty($_SESSION["ID"])){
+    if(empty($_SESSION["ID"])){
 		header('location:index.php');
 	}
+
+$consultaCat = $cn->query("select * from tbl_categoria");
+$listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC);
+
+$consultaProd = $cn->query("select * from tbl_produto");
+
 
 ?>
 <!DOCTYPE HTML>
@@ -38,18 +44,6 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -64,18 +58,6 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -86,37 +68,61 @@
 							</nav>
 						<?php } ?>
 					</div>
+
 				</section>
 
-                <!-- Main -->
-				<section id="main">
+			<!-- Main -->
+            <section id="main">
 					<div class="container">
 						<div id="content">
+                            <div class="col-12" style="display: flex; justify-content: center; margin-top:10px;">
+								<a href="adm-panel.php" class=" button icon solid fa-cog" style="min-width: 350px;">Voltar</a>
+							</div>
+
+                            <div class="buscar">
+                                <form action="busca.php" method="get">
+                                    <input type="search" placeholder="BUSCAR PRODUTOS...">
+                                    <button class="buttonww" >Buscar</button>
+                                </form>
+                            </div>
 
 							<!-- Post -->
-								<article class="box post">
-									<header>
-										<h2>Olá ADM!</h2>
-									</header>
-									<div class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
-										<div class="row gtr-50">
-											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-                                                <a href="cadastrar-produto.php" class="button icon solid fa-cog" style="min-width:300px;">Cadastrar Produtos</a>											
-											</div>
-											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-                                                <a href="alterar-excluir.php" class="button icon solid fa-cog" style="min-width:300px;">Alterar Produtos</a>											
-											</div>
-											<div class="col-12" style="display: flex; justify-content: center;">
-                                                <a href="index.php" class="button icon solid fa-cog" style="min-width:300px;">Voltar</a>
-											</div>
-										</div>
-									</div>
-								</article>
+                            <div class="ouvaiouracha">
+                                <article class="box post paracentralizar">
+                                <?php while($exibeProd = $consultaProd->fetch(PDO::FETCH_ASSOC)) { ?>
+                                <div class="row rowaltera" style="margin-top: 15px;">
+            
+                                    <div class="col-6 alterarprod">
+                                        <div class="col-sm-3 vai"><img src="assets/css/images/<?php echo $exibeProd['imagen_produto']; ?>" style="max-width: 120px;" class="imagemm"></div>
+                                        <div class="col-sm-3"><h4 style="padding-top:20px; min-width:250px; text-align: left;"><?php echo $exibeProd['nome_produto']; ?></h4></div>
+                                    </div>
+                                    <div class="col-6 receba" style="display:flex; justify-content: space-evenly;">
+                                        <div class="col-sm-3 afasta" style="padding-top:20px">    
+                                        <a href="alterar-produto.php?id=<?php echo $exibeProd['id_produto'];?>&id2=<?php echo $exibeProd['id_categoria'];?>" class="">
+                                        <button class="btn btn-lg btn-block btn-default">
+                                        <span class="glyphicon glyphicon-pencil"> Alterar</span>
+                                        </button>
+                                        </a>
+                                        </div>
+                                        
+                                        <div class="col-sm-3 col-xs-offset-right-1" style="padding-top:20px">
+                                        <a href="excluir.php?id=<?php echo $exibeProd['id_produto']; ?>">	
+                                        <button class="btn btn-lg btn-block btn-danger">
+                                        <span class="glyphicon glyphicon-remove"> Excluir</span>		
+                                        </button>
+                                        </a>
+                                        </div> 
+                                    </div>
+                                            
+                                </div>
+                                <?php } ?>
 
+                                </article>
+                            </div>
 						</div>
 					</div>
 				</section>
-
+    
 			<!-- Footer -->
             <section id="footer">
 					<div class="container">
@@ -126,7 +132,7 @@
 						<div class="row">
 							<div class="col-6 col-12-medium">
 								<section>
-									<form method="post" action="#">
+									<form method="post" action="validaUser.php">
 										<div class="row gtr-50">
 											<div class="col-6 col-12-small">
 												<input name="name" placeholder="Name" type="text" />
@@ -202,6 +208,15 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.mask.js"></script>
+
+			<script>
+
+				$(document).ready(function(){
+					$('#preco').mask('000.000.000.000.000,00', {reverse: true});
+				});
+
+			</script>
 
 	</body>
-</html>              
+</html>                

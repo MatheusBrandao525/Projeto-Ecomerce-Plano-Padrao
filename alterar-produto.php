@@ -7,6 +7,15 @@
 		header('location:index.php');
 	}
 
+	$id_produto = $_GET['id'];
+	$id_categoria = $_GET['id2'];
+
+$consultaCat = $cn->query("select id_categoria, nome_categoria from tbl_categoria where id_categoria ='$id_categoria'");
+$exibeCat = $consultaCat->fetch(PDO::FETCH_ASSOC);
+$consultaCat2 = $cn->query("select * from tbl_categoria");
+
+$consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_produto' and id_categoria = '$id_categoria'");
+
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -38,18 +47,6 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -64,18 +61,6 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
@@ -95,19 +80,78 @@
 
 							<!-- Post -->
 								<article class="box post">
+									<?php $exibe = $consultaProd->fetch(PDO::FETCH_ASSOC)?>
 									<header>
 										<h2>Alterar Produto</h2>
 									</header>
-                                        <div class="buscar" style="display: flex; justify-content: center;">
-								            <form action="busca.php" method="get">
-								            	<input type="search" placeholder="BUSCAR PRODUTOS...">
-									            <button class="buttonww" >Buscar</button>
-								            </form>
-							            </div>
-	
-										<div class="col-12" style="display: flex; justify-content: center; margin-top:25px;">
+									<form name="frmusuario" method="post" enctype="multipart/form-data" action="inserir_produto.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+										<div class="row gtr-50">
+											<div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Alterar o nome do produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<input name="txtnomeproduto" value="<?php echo $exibe['nome_produto'];?>" type="text" style="max-width: 350px;" required />
+												</div>
+
+											<div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Selecione a categoria do produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<select name="selectcat" style="max-width: 350px;" id="">
+														<option value="<?php echo $exibeCat['id_categoria'];?>"><?php echo $exibeCat['nome_categoria'];?></option>
+													<?php while($mostraCat = $consultaCat2 -> fetch(PDO::FETCH_ASSOC)) { ?>
+														<option value="<?php echo $mostraCat['id_categoria'];?>"><?php echo $mostraCat['nome_categoria'];?></option>
+													<?php } ?>
+														
+													</select>
+												</div>
+
+											<div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Insira uma descrição para o produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<textarea name="txtdescricao" placeholder="Descrição..." style="max-width: 350px; type="" required /></textarea>
+												</div>
+
+                                            <div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Selecione três imagens para seu produto!</h6>
+                                            </div>
+												<div class="col-12" style="display: flex; justify-content: center;">
+													<input type="file" accept="image/*" name="txtimagem" style="max-width: 350px;" required></input>
+												</div>
+
+												<div class="col-12" style="display: flex; justify-content: center;">
+													<input type="file" accept="image/*" name="txtimagemdois" style="max-width: 350px;" required></input>
+												</div>
+
+												<div class="col-12" style="display: flex; justify-content: center;">
+													<input type="file" accept="image/*" name="txtimagemtres" style="max-width: 350px;" required></input>
+												</div>
+
+                                            <div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Quantidade em estoque</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<input name="txtqnt" style="min-width: 50px; max-width: 100px; padding-left:10px;" placeholder="Estoque" type="number" min="1" style="max-width: 350px;" required />
+												</div>
+
+                                            <div class="col-12" style="display: flex; justify-content: center;">
+                                                <h6>Valor do Produto</h6>
+                                            </div>
+												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
+													<input name="txtvalor" id="preco" style="min-width: 50px; max-width: 100px; padding-left:10px;" placeholder="00,00" type="text" min="1" style="max-width: 350px;" required />
+												</div>
+
+											<div class="col-12">
+												<input type="submit" class="form-button-submit button icon solid fa-cog" style="min-width: 350px;" value="Salvar"></input>
+											</div>
+
+										</div>
+									</form>
+										<div class="col-12" style="display: flex; justify-content: center; margin-top:10px;">
 											<a href="adm-panel.php" class=" button icon solid fa-cog" style="min-width: 350px;">Voltar</a>
 										</div>
+
 								</article>
 
 						</div>
@@ -199,6 +243,15 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.mask.js"></script>
+
+			<script>
+
+				$(document).ready(function(){
+					$('#preco').mask('000.000.000.000.000,00', {reverse: true});
+				});
+
+			</script>
 
 	</body>
 </html>                
