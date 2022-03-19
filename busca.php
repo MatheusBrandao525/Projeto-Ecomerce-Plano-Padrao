@@ -1,16 +1,12 @@
-<?php 
+<?php
 
 	session_start();
 	include "conexao.php";
 
-    if(empty($_SESSION["ID"])){
-		header('location:index.php');
-	}
-
-$consultaCat = $cn->query("select * from tbl_categoria");
-$listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC);
-
-$consultaProd = $cn->query("select * from tbl_produto");
+    $buscarProd = $_GET['txtbuscar'];
+	
+	$consultaCat = $cn->query("select * from tbl_categoria");
+	$consultaProduto = $cn->query("SELECT id_produto, nome_produto, imagen_produto, descricao, vl_produto FROM tbl_produto WHERE nome_produto LIKE CONCAT ('%','$buscarProd','%') OR descricao LIKE CONCAT ('%','$buscarProd','%')");
 
 
 ?>
@@ -30,12 +26,20 @@ $consultaProd = $cn->query("select * from tbl_produto");
 
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body class="no-sidebar is-preload">
+	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header" style="max-height:100px;">
-					<div class="container" style="max-height:100px;">
+				<section id="header" class="borabora">
+					<div class="container" style="max-height:150px;">
+
+						<!-- Logo -->
+							<div class="buscar">
+								<form action="busca.php" method="get">
+									<input type="search" placeholder="BUSCAR PRODUTOS...">
+									<button class="buttonww" >Buscar</button>
+								</form>
+							</div>
 						<!-- Nav -->
 						<?php if(empty($_SESSION['ID'])) { ?>
 							<nav id="nav">
@@ -44,13 +48,13 @@ $consultaProd = $cn->query("select * from tbl_produto");
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
-												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
-											<?php } ?>
+											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></a></li>
+											<?php } ?>	
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -61,84 +65,69 @@ $consultaProd = $cn->query("select * from tbl_produto");
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
-												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
-											<?php } ?>
+											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></a></li>
+											<?php } ?>	
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
 							</nav>
 						<?php } ?>
-					</div>
 
+					</div>
 				</section>
 
-			<!-- Main -->
-            <section id="main">
+			<!-- Features -->
+				<section id="features">
 					<div class="container">
-						<div id="content">
-                            <div class="col-12" style="display: flex; justify-content: center; margin-top:10px;">
-								<a href="adm-panel.php" class=" button icon solid fa-cog" style="min-width: 350px;">Voltar</a>
+						<div class="row aln-center">
+
+						<?php while($exibeProd = $consultaProduto->fetch(PDO::FETCH_ASSOC)) { ?>
+							<div class="col-4 col-6-medium col-12-small">
+
+								<!-- Feature -->
+									<section>
+										<a href="detalhes.php?id=<?php echo $exibeProd['id_produto'];?>" class="image featured"><img src="assets/css/images/<?php echo $exibeProd['imagen_produto'];?>" alt="" /></a>
+										<header>
+											<h3><?php echo $exibeProd['nome_produto'];?></h3>
+										</header>
+										<p style="text-align:left;"><?php echo mb_strimwidth($exibeProd['descricao'],0,97,'...');?></p>
+										<h4>R$ <?php echo number_format($exibeProd['vl_produto'],2,',','.');?></h4>
+										<a href="https://web.whatsapp.com/send?phone=556984481680" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+									</section>
 							</div>
+						<?php } ?>
 
-                            <div class="buscar">
-                                <form action="buscaR-alterar.php" method="get">
-                                    <input type="search" name="txtalterar" placeholder="BUSCAR PRODUTOS...">
-                                    <button class="buttonww" >Buscar</button>
-                                </form>
-                            </div>
-
-							<!-- Post -->
-                            <div class="ouvaiouracha">
-                                <article class="box post paracentralizar">
-                                <?php while($exibeProd = $consultaProd->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <div class="row rowaltera" style="margin-top: 15px;">
-            
-                                    <div class="col-6 alterarprod">
-                                        <div class="col-sm-3 vai"><img src="assets/css/images/<?php echo $exibeProd['imagen_produto']; ?>" style="max-width: 120px;" class="imagemm"></div>
-                                        <div class="col-sm-3"><h4 style="padding-top:20px; min-width:250px; text-align: left;"><?php echo $exibeProd['nome_produto']; ?></h4></div>
-                                    </div>
-                                    <div class="col-6 receba" style="display:flex; justify-content: space-evenly;">
-                                        <div class="col-sm-3 afasta" style="padding-top:20px">    
-                                        <a href="alterar-produto.php?id=<?php echo $exibeProd['id_produto'];?>&id2=<?php echo $exibeProd['id_categoria'];?>" class="">
-                                        <button class="btn btn-lg btn-block btn-default">
-                                        <span class="glyphicon glyphicon-pencil"> Alterar</span>
-                                        </button>
-                                        </a>
-                                        </div>
-                                        
-                                        <div class="col-sm-3 col-xs-offset-right-1" style="padding-top:20px">
-                                        <a href="excluir.php?id=<?php echo $exibeProd['id_produto']; ?>">	
-                                        <button class="btn btn-lg btn-block btn-danger">
-                                        <span class="glyphicon glyphicon-remove"> Excluir</span>		
-                                        </button>
-                                        </a>
-                                        </div> 
-                                    </div>
-                                            
-                                </div>
-                                <?php } ?>
-
-                                </article>
-                            </div>
+							<div class="col-12">
+								<ul class="actions">
+									<li><a href="left-sidebar.php" class="button icon solid fa-file">Ver mais Produtos</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</section>
-    
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="container">
+						<p>Um slogan da empresa..</p>
+					</div>
+				</section>
+
 			<!-- Footer -->
-            <section id="footer">
+				<section id="footer">
 					<div class="container">
 						<header>
-							<h2>Questões ou comentarios? <strong>Entre em contato:</strong></h2>
+							<h2>Questões ou comentarios? <strong>entrar em contato:</strong></h2>
 						</header>
 						<div class="row">
 							<div class="col-6 col-12-medium">
 								<section>
-									<form method="post" action="validaUser.php">
+									<form method="post" action="#">
 										<div class="row gtr-50">
 											<div class="col-6 col-12-small">
 												<input name="name" placeholder="Name" type="text" />
@@ -200,7 +189,7 @@ $consultaProd = $cn->query("select * from tbl_produto");
 					</div>
 					<div id="copyright" class="container">
 						<ul class="links">
-							<li>&copy; Untitled. All rights reserved.</li><li>Desenvolvedor: <a href="http://html5up.net">MATHEUS F. BRANDÃO</a></li>
+							<li>&copy; Untitled. All rights reserved.</li><li>Desenvolvedor: <a href="#">MATHEUS F. BRANDÃO</a></li>
 						</ul>
 					</div>
 				</section>
@@ -214,15 +203,6 @@ $consultaProd = $cn->query("select * from tbl_produto");
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/jquery.mask.js"></script>
-
-			<script>
-
-				$(document).ready(function(){
-					$('#preco').mask('000.000.000.000.000,00', {reverse: true});
-				});
-
-			</script>
 
 	</body>
-</html>                
+</html>

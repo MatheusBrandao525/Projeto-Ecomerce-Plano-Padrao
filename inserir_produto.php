@@ -41,9 +41,8 @@
         move_uploaded_file($imagemUm['tmp_name'], $destinoImg.$imagemNome);
         move_uploaded_file($imagemDois['tmp_name'], $destinoImg.$imagemNome2); 
         move_uploaded_file($imagemTres['tmp_name'], $destinoImg.$imagemNome3);            
-        //$resizeObj = new resize($destino.$img_nome1);
-        //$resizeObj -> resizeImage(900, 640, 'crop');
-        //$resizeObj -> saveImage($destino.$img_nome1, 100);
+
+        header('location:cadastrar-produto.php');
 
 
     }catch (PDOExenption $e){

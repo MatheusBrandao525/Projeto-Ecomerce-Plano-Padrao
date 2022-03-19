@@ -41,10 +41,13 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
+											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
+											<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -55,10 +58,13 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
+											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
+											<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>

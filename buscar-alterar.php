@@ -7,10 +7,12 @@
 		header('location:index.php');
 	}
 
-$consultaCat = $cn->query("select * from tbl_categoria");
-$listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC);
+    $alterarprod = $_GET['txtalterar'];
 
-$consultaProd = $cn->query("select * from tbl_produto");
+    $consultaCat = $cn->query("select * from tbl_categoria");
+    $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC);
+
+    $consultaProd = $cn->query("SELECT * FROM tbl_produto WHERE nome_produto LIKE CONCAT('%','$alterarprod','%')");
 
 
 ?>
@@ -44,13 +46,13 @@ $consultaProd = $cn->query("select * from tbl_produto");
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+                                            <?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
 											<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -61,13 +63,13 @@ $consultaProd = $cn->query("select * from tbl_produto");
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+                                            <?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
 											<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
 									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
@@ -86,7 +88,7 @@ $consultaProd = $cn->query("select * from tbl_produto");
 							</div>
 
                             <div class="buscar">
-                                <form action="buscaR-alterar.php" method="get">
+                                <form action="buscar-alterar.php" method="get">
                                     <input type="search" name="txtalterar" placeholder="BUSCAR PRODUTOS...">
                                     <button class="buttonww" >Buscar</button>
                                 </form>

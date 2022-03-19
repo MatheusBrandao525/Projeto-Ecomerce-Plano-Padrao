@@ -2,8 +2,18 @@
 
 	session_start();
 	include "conexao.php";
-?>
 
+	$detalhes = $_GET['id'];
+	$codigoCat = $_GET['idcat'];
+
+	$consultaCate = $cn->query("SELECT * FROM tbl_categoria WHERE id_categoria = '$codigoCat'");
+	$exibeCate = $consultaCate->fetch(PDO::FETCH_ASSOC);
+	$consultaProduto = $cn->query("SELECT id_produto, nome_produto, imagen_produto, descricao, vl_produto FROM tbl_produto WHERE id_produto ='$detalhes'");
+	$exibeDetalhes = $consultaProduto->fetch(PDO::FETCH_ASSOC);
+
+
+
+?>
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -98,22 +108,17 @@
 							<!-- Content -->
 								<div id="content" class="col-6 col-12-medium">
                                     <header>
-                                        <span class="image featured"><img src="images/original.jpeg" alt="" /></span>
+                                        <span class="image featured"><img src="assets/css/images/<?php echo $exibeDetalhes['imagen_produto'];?>" alt="" /></span>
 									</header>
                                 </div>
 
                                 <div class="col-6 col-12-medium">
 									<!-- Post -->
 										<article class="box post">
-                                            <h2>Nome do produto</h2>
-											<h3>categoria:</h3>
-                                                <p>Consequat Phasellus laoreet massa id in, tristique at erat lorem
-                                                ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros
-                                                consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-                                                justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-                                                mollis tortor congue. Sed quis mauris sit amet magna.</p>
-                                            <h4><del>R$ 650,00</del></h4>
-										    <h4>R$ 500,00</h4>
+                                            <h2><?php echo $exibeDetalhes['nome_produto'];?></h2>
+											<h3>categoria: <?php echo $exibeCate['nome_categoria'];?></h3>
+                                            <p><?php echo $exibeDetalhes['descricao'];?></p>
+										    <h4>R$ <?php echo number_format($exibeDetalhes['vl_produto'],2,',','.');?></h4>
 											
 											<a href="https://web.whatsapp.com/send?phone=" target="_blank" class="buttonw "><i class="fab fa-whatsapp"></i> Entre em contato</a>
 										</article>

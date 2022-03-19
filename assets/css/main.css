@@ -2684,19 +2684,35 @@ input, select, textarea {
 
 		/* Image */
 		.ouvaiouracha{
-			display: flex;
-			justify-content: center;
-
+			display: block;
+			text-align: center;
 		}
 
 		.rowaltera{
-			display: block;
+			display: flex;
 			text-align: center;
-			margin-left: 70px;
+			justify-content: center;
+			align-items: center;
+		
 		}
 		.alterarprod{
 			display: block;
 			text-align: center;
+		}
+		
+		.blur{
+			margin-bottom: 10px;
+		}
+
+		.borabora{
+			height: 200px;
+		}
+		.borabora2{
+			height: 250px;
+		}
+
+		.buscar{
+			padding-top: 0;
 		}
 
 		.receba>.afasta{

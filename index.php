@@ -4,6 +4,8 @@
 	include "conexao.php";
 	
 	$consultaCat = $cn->query("select * from tbl_categoria");
+	$consultaProduto = $cn->query("SELECT id_produto, nome_produto, imagen_produto, id_categoria, descricao, vl_produto FROM tbl_produto");
+
 
 ?>
 <!DOCTYPE HTML>
@@ -26,7 +28,7 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header">
+				<section id="header" class="borabora2">
 					<div class="container fundo">
 
 						<!-- Logo -->
@@ -38,7 +40,7 @@
 							</div>
 							<div class="buscar">
 								<form action="busca.php" method="get">
-									<input type="search" placeholder="BUSCAR PRODUTOS...">
+									<input type="search" name="txtbuscar" placeholder="BUSCAR PRODUTOS...">
 									<button class="buttonww" >Buscar</button>
 								</form>
 							</div>
@@ -51,12 +53,12 @@
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
 											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
-												<li><a href="#"><?php echo $listaCat['nome_categoria'];?></a></li>
+												<li><a href="categoria.php?cat=<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></a></li>
 											<?php } ?>	
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -67,13 +69,13 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-										<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
-												<li><a href="#"><?php echo $listaCat['nome_categoria'];?></a></li>
+											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></a></li>
 											<?php } ?>	
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
@@ -91,134 +93,21 @@
 						</header>
 						<div class="row aln-center">
 
+						<?php while($exibeProd = $consultaProduto->fetch(PDO::FETCH_ASSOC)) { ?>
 							<div class="col-4 col-6-medium col-12-small">
 
 								<!-- Feature -->
 									<section>
-										<a href="detalhes.php" class="image featured"><img src="images/gabinete.jpg" alt="" /></a>
+										<a href="detalhes.php?id=<?php echo $exibeProd['id_produto'];?>&idcat=<?php echo $exibeProd['id_categoria'];?>" class="image featured"><img src="assets/css/images/<?php echo $exibeProd['imagen_produto'];?>" alt="" /></a>
 										<header>
-											<h3>Gabinete Gamer</h3>
+											<h3><?php echo $exibeProd['nome_produto'];?></h3>
 										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
+										<p style="text-align:left;"><?php echo mb_strimwidth($exibeProd['descricao'],0,97,'...');?></p>
+										<h4>R$ <?php echo number_format($exibeProd['vl_produto'],2,',','.');?></h4>
 										<a href="https://web.whatsapp.com/send?phone=556984481680" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
-
 							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="detalhes.php" class="image featured"><img src="images/teclado.jpg" alt="" /></a>
-										<header>
-											<h3>Teclado Mecanico</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="#" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/mouse.jpg" alt="" /></a>
-										<header>
-											<h3>Mouse Gamer</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/munitor.jpg" alt="" /></a>
-										<header>
-											<h3>Munitor Gamer</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/processador.jpg" alt="" /></a>
-										<header>
-											<h3>Processadar i9</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/placa-video.jpg" alt="" /></a>
-										<header>
-											<h3>Placa de video</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569993217937" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/fone.jpg" alt="" /></a>
-										<header>
-											<h3>headset gamer</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569984634990" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/ssd.jpg" alt="" /></a>
-										<header>
-											<h3>Ssd 480gb</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569993479744" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-
-								<!-- Feature -->
-									<section>
-										<a href="#" class="image featured"><img src="images/fonte.jpg" alt="" /></a>
-										<header>
-											<h3>Fonte 500w</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-										<h4>R$ 00,00</h4>
-										<a href="https://web.whatsapp.com/send?phone=5569993075526" target="_blank" class="buttonw "><i class="fab fa-whatsapp"></i> Entre em contato</a>
-									</section>
-
-							</div>
-
+						<?php } ?>
 
 							<div class="col-12">
 								<ul class="actions">
@@ -236,148 +125,6 @@
 					</div>
 				</section>
 
-			<!-- Main -->
-				<section id="main">
-					<div class="container">
-						<div class="row">
-
-							<!-- Content -->
-								<div id="content" class="col-8 col-12-medium">
-
-									<!-- Post -->
-										<article class="box post">
-											<header>
-												<h2><a href="#">Montagem, formatação e manutenção de computadores e impresoras em geral.</a></h2>
-											</header>
-											<a href="#" class="image featured"><img src="images/original.jpeg" alt="" /></a>
-											<h3>Extremo profissionalismo!</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero quis interdum commodo.</p>
-											<ul class="actions">
-												<li><a href="right-sidebar.html" class="button icon solid fa-file">Ver mais</a></li>
-											</ul>
-										</article>
-										
-
-									<!-- Post -->
-										<article class="box post">
-											<header>
-												<h2><a href="#">Sobre nós</a></h2>
-											</header>
-											<a href="#" class="image featured"><img src="images/localizacao.jpg" alt="" /></a>
-											<h3>You should probably check out her work</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum malesuada.</p>
-											<ul class="actions">
-												<li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
-											</ul>
-										</article>
-
-								</div>
-
-							<!-- Sidebar -->
-								<div id="sidebar" class="col-4 col-12-medium">
-
-									<!-- Excerpts -->
-										<section>
-											<ul class="divided">
-												<li>
-													<h2>Depoimentos</h2>
-													<!-- Excerpt -->
-														<article class="box excerpt">
-															<header>
-																<span class="date">July 30</span>
-																<h3><a href="#">Fulano 1</a></h3>
-															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
-														</article>
-
-												</li>
-												<li>
-
-													<!-- Excerpt -->
-														<article class="box excerpt">
-															<header>
-																<span class="date">July 28</span>
-																<h3><a href="#">Fulano 2</a></h3>
-															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
-														</article>
-
-												</li>
-												<li>
-
-													<!-- Excerpt -->
-														<article class="box excerpt">
-															<header>
-																<span class="date">July 24</span>
-																<h3><a href="#">Fulano 3</a></h3>
-															</header>
-															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
-															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
-														</article>
-
-												</li>
-											</ul>
-										</section>
-
-									<!-- Highlights -->
-										<section>
-											<ul class="divided">
-												<li>
-
-													<!-- Highlight -->
-														<article class="box highlight">
-															<header>
-																<h3><a href="#">Nome do Dono</a></h3>
-															</header>
-															<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>
-															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-															<ul class="actions">
-																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-															</ul>
-														</article>
-
-												</li>
-												<li>
-
-													<!-- Highlight -->
-														<article class="box highlight">
-															<header>
-																<h3><a href="#">Something of less note</a></h3>
-															</header>
-															<a href="#" class="image left"><img src="images/pic07.jpg" alt="" /></a>
-															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-															<ul class="actions">
-																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-															</ul>
-														</article>
-
-												</li>
-											</ul>
-										</section>
-
-								</div>
-
-						</div>
-					</div>
-				</section>
 
 			<!-- Footer -->
 				<section id="footer">

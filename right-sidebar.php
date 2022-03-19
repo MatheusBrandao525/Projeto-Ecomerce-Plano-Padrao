@@ -3,6 +3,7 @@
 	session_start();
 	include "conexao.php";
 
+	$consultaCat = $cn->query("select * from tbl_categoria");
 
 ?>
 
@@ -23,18 +24,13 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header">
-					<div class="container">
+			<section id="header" style="border-bottom:none; max-height:100px;">
+					<div class="container" style="border-bottom:none; max-height:100px;">
 
-						<!-- Logo -->
+						<!-- Logo --
 							<h1 id="logo"><a href="index.php">Space info</a></h1>
 							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
-							<div class="buscar">
-								<form action="busca.php" method="get">
-									<input type="search" placeholder="BUSCAR PRODUTOS...">
-									<button class="buttonww" >Buscar</button>
-								</form>
-							</div>
+
 						<!-- Nav -->
 						<?php if(empty($_SESSION['ID'])) { ?>
 							<nav id="nav">
@@ -43,22 +39,13 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
+											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
+											<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -69,22 +56,13 @@
 									<li>
 										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
+											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
+												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
+											<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
@@ -92,8 +70,7 @@
 						<?php } ?>
 
 					</div>
-				</section>
-
+				</section> 
 			<!-- Main -->
 				<section id="main">
 					<div class="container">
