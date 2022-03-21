@@ -1792,6 +1792,12 @@ input, select, textarea {
 		justify-content: center;
 		align-items: center;
 	}
+
+	.carousel{
+		width: 100%;
+		margin: 0 auto;
+	}
+
 	.buscar>form>input{
 		min-width: 450px;
 		min-height: 40.517px;
@@ -1978,11 +1984,51 @@ input, select, textarea {
 	}
 
 		#header > .container {
-			padding: 14em 0 7em 0;
+			padding: 7em 0 7em 0;
 			border-bottom: solid 2px #e5e5e5;
 			box-shadow: inset 0px -8px 0px 0px #fff, inset 0px -10px 0px 0px #e5e5e5;
 			justify-content: center;
 		}
+
+			/*-- header da pagina HOME --*/
+			#headerr {
+				position: relative;
+				position: relative;
+				background: #fff;
+				text-align: center;
+				background-image: url("images/fundo-de-formas.webp");
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		
+				#headerr > .container {
+					padding: 14em 0 7em 0;
+					border-bottom: solid 2px #e5e5e5;
+					box-shadow: inset 0px -8px 0px 0px #fff, inset 0px -10px 0px 0px #e5e5e5;
+					justify-content: center;
+				}
+
+				#headerr h1 {
+					font-family: 'Arvo';
+					font-weight: 700;
+					color: #ffffff;
+					text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.9);
+					font-size: 3em;
+					letter-spacing: 13px;
+				}
+				#headerr h1 a {
+					border: 0;
+				}
+				#headerr p {
+					text-transform: uppercase;
+					font-weight: 400;
+					color: rgb(238, 237, 237);
+					margin: 2.5em 0 0 0;
+					font-size: 0.85em;
+					letter-spacing: 3px;
+					text-align: center;
+				}
+
 
 		.fundo{
 			background-image: url("images/R\ \(1\).png");

@@ -53,7 +53,14 @@ as select
 from tbl_produto inner join tbl_categoria
 	on tbl_produto.id_categoria = tbl_categoria.id_categoria;
     
-show databases;
+CREATE TABLE tbl_depoimento (
+  id int NOT NULL AUTO_INCREMENT,
+  nome_usuario varchar(45) DEFAULT NULL,
+  dsp_email varchar(45) DEFAULT NULL,
+  dsp_depoimento varchar(45) DEFAULT NULL,
+  ds_data timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE USER 'Matheusb'@'localhost' IDENTIFIED WITH mysql_native_password BY '1exagon1@';
 grant all privileges on db_space_info.* to 'Matheusb'@'localhost' with grant option;
@@ -62,18 +69,14 @@ insert into tbl_usuario
 values(default,'Matheus Felipe','Brandão','03600717243','mafe123silva@gmail.com','exagon10','1','Br 429 km90','São Francisco','76935000','993203891');
 
 insert into tbl_categoria
-values(default,'Gabinetes'),
-(default,'Processadores'),
-(default,'Placas Mãe'),
-(default,'Placa de Video'),
-(default,'Coolers'),
-(default,'Mouse'),
-(default,'Teclados'),
-(default,'HeadSet'),
-(default,'Mouse-pad'),
-(default,'Armazenamento');
+values(default,'Peças Usadas');
+
+
 
 select * from tbl_categoria;
+
+select * from tbl_depoimento;
+delete from tbl_depoimento where id_depoimento>1;
 
 select * from tbl_produto;
 
