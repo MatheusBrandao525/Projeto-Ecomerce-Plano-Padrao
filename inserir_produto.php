@@ -1,5 +1,7 @@
 <?php 
 
+    session_start();
+
     include 'conexao.php';
     include 'resize-class.php';
 
@@ -39,10 +41,21 @@
         
 
         move_uploaded_file($imagemUm['tmp_name'], $destinoImg.$imagemNome);
-        move_uploaded_file($imagemDois['tmp_name'], $destinoImg.$imagemNome2); 
-        move_uploaded_file($imagemTres['tmp_name'], $destinoImg.$imagemNome3);            
+        $resizeObj = new resize($destinoImg.$imagemNome);
+        $resizeObj -> resizeImage(750, 1000, 'crop');
+        $resizeObj -> saveImage($destinoImg.$imagemNome, 100);
 
-        header('location:cadastrar-produto.php');
+        move_uploaded_file($imagemDois['tmp_name'], $destinoImg.$imagemNome2); 
+        $resizeObj = new resize($destinoImg.$imagemNome2);
+        $resizeObj -> resizeImage(750, 1000, 'crop');
+        $resizeObj -> saveImage($destinoImg.$imagemNome2, 100);
+
+        move_uploaded_file($imagemTres['tmp_name'], $destinoImg.$imagemNome3);            
+        $resizeObj = new resize($destinoImg.$imagemNome3);
+        $resizeObj -> resizeImage(750, 1000, 'crop');
+        $resizeObj -> saveImage($destinoImg.$imagemNome3, 100);
+
+        header("location:adm-panel.php");
 
 
     }catch (PDOExenption $e){

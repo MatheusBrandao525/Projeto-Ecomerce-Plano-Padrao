@@ -2,7 +2,7 @@
             <section id="footer">
 					<div class="container">
 						<header>
-							<h2>Questões ou comentarios? <strong>entrar em contato:</strong></h2>
+							<h2>Se gostou deixe seu comentario! <strong>ou entre em contato pelas redes sociais:</strong></h2>
 						</header>
 						<div class="row">
 							<div class="col-6 col-12-medium">
@@ -20,7 +20,7 @@
 											</div>
 
 											<div class="col-12">
-												<input type="submit" class="form-button-submit button icon solid fa-envelope" value=" Enviar"></input>
+												<input type="submit" class="form-button-submit button icon solid fa-envelope" value=" Enviar comentario"></input>
 											</div>
 										</div>
 									</form>
@@ -28,38 +28,29 @@
 							</div>
 							<div class="col-6 col-12-medium">
 								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
+									<p>Se já comprou e gostou dos nossos produtos, por favor não esqueça de deixar seu comentário, isso nos ajuda muito</p>
+									<p>Nossa redes sociais e contatos</p>
 									<div class="row">
 										<div class="col-6 col-12-small">
 											<ul class="icons">
 												<li class="icon solid fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
+													Cujubim-Rondônia<br />
 												</li>
 												<li class="icon solid fa-phone">
-													(000) 000-0000
+													(69) 98474-3856
 												</li>
 												<li class="icon solid fa-envelope">
-													<a href="#">info@untitled.tld</a>
+													<a href="#">noadiavitora452@gmail.com</a>
 												</li>
 											</ul>
 										</div>
 										<div class="col-6 col-12-small">
 											<ul class="icons">
-												<li class="icon brands fa-twitter">
-													<a href="#">@untitled</a>
-												</li>
 												<li class="icon brands fa-instagram">
-													<a href="#">instagram.com/untitled</a>
-												</li>
-												<li class="icon brands fa-dribbble">
-													<a href="#">dribbble.com/untitled</a>
+													<a href="https://www.instagram.com/noadiabrandao/" target="_blank">instagram.com/noadiabrandao</a>
 												</li>
 												<li class="icon brands fa-facebook-f">
-													<a href="#">facebook.com/untitled</a>
+													<a href="https://www.facebook.com/noadia.brandao" target="_blank">facebook.com/NoadiaBrandão</a>
 												</li>
 											</ul>
 										</div>
@@ -70,7 +61,7 @@
 					</div>
 					<div id="copyright" class="container">
 						<ul class="links">
-							<li>&copy; Untitled. All rights reserved.</li><li>Desenvolvedor: <a href="#">MATHEUS F. BRANDÃO</a></li>
+							<li>&copy; Untitled. All rights reserved.</li><li>Desenvolvedor: <a href="https://www.instagram.com/matheusfelipebrandrao/"  target="_blank">MATHEUS F. BRANDÃO</a></li>
 						</ul>
 					</div>
 				</section>
@@ -84,14 +75,37 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
 
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"></script>
+			<script src="assets/slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
 
+            <!-- Swiper JS -->
+                <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+            
+                <!-- Initialize Swiper -->
+                <script>
+                  var swiper = new Swiper(".mySwiper", {
+                    spaceBetween: 30,
+                    effect: "fade",
+                    loop: true,
+                    autoplay: {
+                      delay: 4000,
+                      disableOnInteraction: false,
+                    },
+                    pagination: {
+                      el: ".swiper-pagination",
+                      clickable: true,
+                    },
+                  });
+                </script>
 			<script>
 				$('.carousel').slick({
-					dots: true
+					dots: true,
+					infinite: true,
+					
+					
 				});
 
 			</script>

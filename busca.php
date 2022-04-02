@@ -6,19 +6,15 @@
     $buscarProd = $_GET['txtbuscar'];
 	
 	$consultaCat = $cn->query("select * from tbl_categoria");
-	$consultaProduto = $cn->query("SELECT id_produto, nome_produto, imagen_produto, descricao, vl_produto FROM tbl_produto WHERE nome_produto LIKE CONCAT ('%','$buscarProd','%') OR descricao LIKE CONCAT ('%','$buscarProd','%')");
+	$consultaProduto = $cn->query("SELECT id_produto, nome_produto, id_categoria, imagen_produto, descricao, vl_produto FROM tbl_produto WHERE nome_produto LIKE CONCAT ('%','$buscarProd','%') OR descricao LIKE CONCAT ('%','$buscarProd','%')");
 
 
 ?>
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html lang="pt-br" translate="no">
 	<head>
-		<title>Space info</title>
+		<title>Crochê da Noadia</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
@@ -46,7 +42,7 @@
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></a></li>
@@ -54,7 +50,7 @@
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre nós</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -63,7 +59,7 @@
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></a></li>
@@ -71,8 +67,8 @@
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre nós</span></a></li>
-									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre nós</span></a></li>
+									<li><a class="icon solid fa-gears" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
 							</nav>
@@ -87,7 +83,7 @@
 						<div class="row aln-center">
 
 						<?php while($exibeProd = $consultaProduto->fetch(PDO::FETCH_ASSOC)) { ?>
-							<div class="col-4 col-6-medium col-12-small">
+							<div class="col-3 col-6-medium col-12-small">
 
 								<!-- Feature -->
 									<section>
@@ -95,28 +91,19 @@
 										<header>
 											<h3><?php echo $exibeProd['nome_produto'];?></h3>
 										</header>
-										<p style="text-align:left;"><?php echo mb_strimwidth($exibeProd['descricao'],0,97,'...');?></p>
+										<p class="descricaoprod" style="text-align:left;"><?php echo mb_strimwidth($exibeProd['descricao'],0,97,'...');?></p>
 										<h4>R$ <?php echo number_format($exibeProd['vl_produto'],2,',','.');?></h4>
-										<a href="https://web.whatsapp.com/send?phone=556984481680" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
+										<a href="detalhes.php?id=<?php echo $exibeProd['id_produto'];?>&idcat=<?php echo $exibeProd['id_categoria'];?>" class="buttonDetalhes"><i class="fab fa-dettails"></i> Detalhes</a>
+										<a href="https://api.whatsapp.com/send?phone=5569984743856&text=<?php echo $exibeProd['nome_produto'], ' R$'. $exibeProd['vl_produto'];?>" target="_blank" class="buttonw"><i class="fab fa-whatsapp"></i> Entre em contato</a>
 									</section>
 							</div>
 						<?php } ?>
 
-							<div class="col-12">
-								<ul class="actions">
-									<li><a href="left-sidebar.php" class="button icon solid fa-file">Ver mais Produtos</a></li>
-								</ul>
-							</div>
+
 						</div>
 					</div>
 				</section>
 
-			<!-- Banner -->
-				<section id="banner">
-					<div class="container">
-						<p>Um slogan da empresa..</p>
-					</div>
-				</section>
 
 <?php 
 

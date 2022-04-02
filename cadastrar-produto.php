@@ -8,18 +8,14 @@
 	}
 
 $consultaCat = $cn->query("select * from tbl_categoria");
-$listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
+$consultaCate = $cn->query("SELECT * FROM tbl_categoria");
 
 ?>
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html lang="pt-br" translate="no">
 	<head>
-		<title>Space info</title>
+		<title>Cadastrar Produtos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
@@ -31,7 +27,7 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header" style="max-height:100px;">
+				<section id="header" style="max-height:120px;">
 					<div class="container" style="max-height:100px;">
 						<!-- Nav -->
 						<?php if(empty($_SESSION['ID'])) { ?>
@@ -39,7 +35,7 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
@@ -47,7 +43,7 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -56,7 +52,7 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
@@ -64,8 +60,8 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
-									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-gears" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
 							</nav>
@@ -98,7 +94,7 @@ $listaCat = $consultaCat->fetch(PDO::FETCH_ASSOC)
 												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
 													<select name="selectcat" style="max-width: 350px;" id="">
 														<option value="">Selecione</option>
-													<?php while($listaCat = $consultaCat -> fetch(PDO::FETCH_ASSOC)) { ?>
+													<?php while($listaCat = $consultaCate -> fetch(PDO::FETCH_ASSOC)) { ?>
 														<option value="<?php echo $listaCat['id_categoria'];?>"><?php echo $listaCat['nome_categoria'];?></option>
 													<?php } ?>
 														

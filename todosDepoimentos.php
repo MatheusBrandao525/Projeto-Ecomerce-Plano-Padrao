@@ -1,28 +1,25 @@
-<?php 
+<?php
 
 	session_start();
 	include "conexao.php";
-
+	
 	$consultaCat = $cn->query("select * from tbl_categoria");
 
-
-	$consultaDepoimento = $cn->query("SELECT nome_usuario, dsp_email, dsp_depoimento, date_format(ds_data, '%d/%m/%Y') AS ds_data FROM tbl_depoimento order by id desc limit 3");
-
+	$consultaDepoimento = $cn->query("SELECT id, nome_usuario, dsp_email, dsp_depoimento, date_format(ds_data, '%d/%m/%Y') AS ds_data FROM tbl_depoimento order by id desc");
 
 ?>
-
 <!DOCTYPE HTML>
-
 <html lang="pt-br" translate="no">
 	<head>
-		<title>Serviços</title>
+		<title>Depoimentos</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body class="right-sidebar is-preload">
+	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -68,44 +65,26 @@
 
 					</div>
 				</section> 
-			<!-- Main -->
-				<section id="main">
+            <!-- Main -->
+            <section id="main">
 					<div class="container">
 						<div class="row">
-
-							<!-- Content -->
-								<div id="content" class="col-8 col-12-medium">
-
-									<!-- Post -->
-										<article class="box post">
-											<header>
-												<h2>Fabricamos por encomenda!</h2>
-											</header>
-											<span class="image featured" style="max-width:700px;"><img src="assets/css/images/servicos02.jpg" alt="" /></span>
-											<h3></h3>
-											<p>Se você tem uma ideia em mente para decorar sua casa do seu jeito, com as cores que você gosta, com os detalhes que você gosta, não perca tempo 
-											entre em contato conosco pelo whatsApp e faça um orçamento e combine preços e prazos para entrega</p>
-											<a href="https://api.whatsapp.com/send?phone=5569984743856&text=Quero fazer um orçamento" target="_blank" class="buttonw " style="font-size:0.70rem;"><i class="fab fa-whatsapp"></i> Faça um orçamento</a>
-										</article>
-
-								</div>
-
 							<!-- Sidebar -->
-								<div id="sidebar" class="col-4 col-12-medium">
+								<div id="sidebar" class="col-12 col-12-medium">
 
 									<!-- Excerpts -->
-									<section>
+										<section class="depoimento">
 											<ul class="divided">
-											<h2>Depoimentos</h2>
+											<h2 style="text-align:center;">Depoimentos</h2>
 											<?php while($exibeDepoimento = $consultaDepoimento->fetch(PDO::FETCH_ASSOC)) { ?>
-												<li>
+												<li id="<?php echo $exibeDepoimento['id'];?>">
 
 
 													<!-- Excerpt -->
 														<article class="box excerpt">
 															<header>
 																<span class="date"><?php echo $exibeDepoimento["ds_data"];?></span>
-																<h3><a href="#"><?php echo $exibeDepoimento['nome_usuario'];?></a></h3>
+																<h3><?php echo $exibeDepoimento['nome_usuario'];?></h3>
 															</header>
 															<p><?php echo $exibeDepoimento['dsp_depoimento'];?></p>
 														</article>
@@ -114,19 +93,15 @@
 											<?php } ?>
 
 											</ul>
-											<a href="todosDepoimentos.php" class="button" style="margin-top:5rem;">Ver mais depoimentos</a>
-									</section>
 
-
-
+										</section>
 								</div>
 
 						</div>
 					</div>
-				</section>
+			</section>
 
 <?php 
-
 
 include 'footer.php';
 

@@ -19,14 +19,10 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
 
 ?>
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html lang="pt-br" translate="no">
 	<head>
-		<title>Space info</title>
+		<title>Alterar</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
@@ -38,7 +34,7 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header" style="max-height:100px;">
+				<section id="header" style="max-height:120px;">
 					<div class="container" style="max-height:100px;">
 						<!-- Nav -->
 						<?php if(empty($_SESSION['ID'])) { ?>
@@ -46,7 +42,7 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($exibecate = $consultaCate->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecate['id_categoria'];?>"><?php echo $exibecate['nome_categoria'];?></a></li>
@@ -54,7 +50,7 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -63,7 +59,7 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($exibecate = $consultaCate->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecate['id_categoria'];?>"><?php echo $exibecate['nome_categoria'];?></a></li>
@@ -71,8 +67,8 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
-									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-gears" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
 							</nav>
@@ -155,7 +151,7 @@ $consultaProd = $cn->query("select * from tbl_produto where id_produto = '$id_pr
                                                 <h6>Valor do Produto</h6>
                                             </div>
 												<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
-													<input name="txtvalor" id="preco" style="min-width: 50px; max-width: 100px; padding-left:10px;" value="<?php echo $exibe['vl_produto'];?>" type="text" min="1" style="max-width: 350px;" required />
+													<input name="txtvalor" id="preco" style="min-width: 50px; max-width: 100px; padding-left:10px;" value="<?php echo number_format($exibe['vl_produto'],2,',','.');?>" type="text" min="1" style="max-width: 350px;" required />
 												</div>
 
 											<div class="col-12">

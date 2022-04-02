@@ -1,9 +1,9 @@
 <?php 
 
     $servidor ="localhost";
-    $usuario ="root";
-    $senha ="1exagon1@";
-    $banco ="db_space_info";
+    $usuario ="u419134985_Noadia";
+    $senha ="Brandao10@";
+    $banco ="u419134985_crochesNoa";
 
     $cn = new PDO("mysql:host=$servidor;dbname=$banco", $usuario, $senha);
 

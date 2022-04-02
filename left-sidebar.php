@@ -5,18 +5,13 @@
 	
 	$consultaCat = $cn->query("select * from tbl_categoria");
 
-	$consultaDepoimento = $cn->query("SELECT nome_usuario, dsp_email, dsp_depoimento, date_format(ds_data, '%d/%m/%Y') AS ds_data FROM tbl_depoimento");
+	$consultaDepoimento = $cn->query("SELECT id, nome_usuario, dsp_email, dsp_depoimento, date_format(ds_data, '%d/%m/%Y') AS ds_data FROM tbl_depoimento order by id desc limit 3");
 
 ?>
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html lang="pt-br" translate="no">
 	<head>
-		<title>Space info</title>
+		<title>Sobre nós</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
@@ -28,20 +23,15 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-			<section id="header" style="border-bottom:none; max-height:100px;">
-					<div class="container" style="border-bottom:none; max-height:100px;">
-
-						<!-- Logo --
-							<h1 id="logo"><a href="index.php">Space info</a></h1>
-							<p>Acessorios para PC Gamer, peças e assistencia tecnica.</p>
-
+				<section id="header" style="max-height:120px;">
+					<div class="container" style="max-height:100px;">
 						<!-- Nav -->
 						<?php if(empty($_SESSION['ID'])) { ?>
 							<nav id="nav">
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
@@ -49,7 +39,7 @@
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -58,7 +48,7 @@
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 											<?php while($exibecat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 												<li><a href="categoria.php?cat=<?php echo $exibecat['id_categoria'];?>"><?php echo $exibecat['nome_categoria'];?></a></li>
@@ -66,15 +56,14 @@
 										</ul>
 									</li>
 									<li><a class="icon solid fa-box" href="right-sidebar.php"><span>Serviços</span></a></li>
-									<li><a class="icon solid fa-retweet" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
-									<li><a class="icon solid fa-cog" href="adm-panel.php"><span>Administrador</span></a></li>
+									<li><a class="icon solid fa-info" href="left-sidebar.php"><span>Sobre Nós</span></a></li>
+									<li><a class="icon solid fa-gears" href="adm-panel.php"><span>Administrador</span></a></li>
 									<li><a class="icon solid fa-cog" href="sair.php"><span>sair</span></a></li>
 								</ul>
 							</nav>
 						<?php } ?>
-
 					</div>
-				</section> 
+				</section>
             <!-- Main -->
             <section id="main">
 					<div class="container">
@@ -84,27 +73,49 @@
 								<div id="content" class="col-8 col-12-medium">								
 
 									<!-- Post -->
-										<article class="box post">
-											<header>
-												<h2><a href="#">Sobre nós</a></h2>
-											</header>
-											<a href="#" class="image featured"><img src="images/localizacao.jpg" alt="" /></a>
-											<h3>You should probably check out her work</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum malesuada.</p>
-											<ul class="actions">
-												<li><a href="#" class="button icon solid fa-file">Continue Reading</a></li>
+									<article class="box highlight">
+										<header>
+											<h2><a href="#">Sobre nós</a></h2>
+										</header>
+										<header>
+											<h3><a href="#">Noádia Vitória</a></h3>
+										</header>
+										<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>
+											<p>Olá, meu nome é Noádia sou a dona deste site, e espero que você esteja bem, vou te contar um pouco mais sobre mim,
+											   gosto muito de fazer crochê, comecei a assistir aulas no youtube para aprender e hoje posso dizer que sou quase profissional Rsrsrs,
+											   digo isso por que o aprendizado numca termina e sempre devemos buscar mais conhecimento, enfim, bem vindo ao meu site!,
+											   este é o lugar onde divulgo meu trabalho, pois depois de me casar me mudei para um lugar onde não conheço muitas pessoas então meu irmão que é estudante
+											   desenvolvimento criou este site para me ajudar a divulgar meus trabalhos.</p>
+									</article>
+
+									<section>
+											<ul class="divided">
+												<li>
+
+													<!-- Highlight -->
+													<article class="box post">
+    													<h3>Sobre os produtos</h3>
+    													<p>Todas as peças são produzidas com linhas de qualidade e temos extremo comprometimento com os prazos combinados, alguns modelos podem não estar disponiveis a pronta entrega pois são produzidos comforme a demanda,
+    													   também podem ser produzidos com as exigencias do cliente, com a linha e as cores de preferencia do cliente.</p>
+													</article>
+												</li>
 											</ul>
-										</article>
+										</section>
+
+										<section>
+											<ul class="divided">
+												<li>
+
+													<!-- Highlight -->
+													<article class="box post">
+													<h3>Sobre os envios</h3>
+													<p>Envio de pedidos/remessas entre os dias 20 e 31 de todo mês, frete a combinar na hora de fechar o pedido .</p>
+
+													</article>
+												</li>
+											</ul>
+										</section>
+
 										
 										<!-- Highlights -->
 										<section>
@@ -112,38 +123,15 @@
 												<li>
 
 													<!-- Highlight -->
-													<article class="box highlight">
-														<header>
-															<h3><a href="#">Nome do Dono</a></h3>
-														</header>
-														<a href="#" class="image left"><img src="images/pic06.jpg" alt="" /></a>
-														<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-														viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-														convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-														facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-														<ul class="actions">
-															<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-														</ul>
+													<article class="box post">
+													<h3>Sobre o site</h3>
+													<p>Este site foi desenvolvido com o intuito de ajudar minha irmã a vender os trablhos que ela faz em crochê, e ela é muito boa nisso por sinal,
+														você pode ficar a vontade para explorar o site e descobrir os trabalhos que minha irmã faz, se caso se interessar por algum é só entrar em
+														contato com ela diretamente pelo botão do Whatsapp que está disponivel abaixo de cada produto, e combinar a entregua e ou se quiser encomendar
+														algum trabalho em crochê também é possivel pois ela aceita pedidos, se caso não estiver se sentindo confortavél em relação a segurança e a confiabilidade
+														site basta olhar os depoimentos das pessoas que ja comprarão ou que ja fizeram alguma encomenda, .</p>
+
 													</article>
-
-												</li>
-												<li>
-
-													<!-- Highlight -->
-													<article class="box highlight">
-														<header>
-															<h3><a href="#">Something of less note</a></h3>
-														</header>
-														<a href="#" class="image left"><img src="images/pic07.jpg" alt="" /></a>
-														<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-														viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-														convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-														facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
-														<ul class="actions">
-															<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-														</ul>
-													</article>
-
 												</li>
 											</ul>
 										</section>
@@ -154,7 +142,7 @@
 								<div id="sidebar" class="col-4 col-12-medium">
 
 									<!-- Excerpts -->
-										<section>
+										<section class="depoimento">
 											<ul class="divided">
 											<h2>Depoimentos</h2>
 											<?php while($exibeDepoimento = $consultaDepoimento->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -165,7 +153,7 @@
 														<article class="box excerpt">
 															<header>
 																<span class="date"><?php echo $exibeDepoimento["ds_data"];?></span>
-																<h3><a href="#"><?php echo $exibeDepoimento['nome_usuario'];?></a></h3>
+																<h3><a href="todosDepoimentos.php"><?php echo $exibeDepoimento['nome_usuario'];?></a></h3>
 															</header>
 															<p><?php echo $exibeDepoimento['dsp_depoimento'];?></p>
 														</article>
@@ -174,6 +162,7 @@
 											<?php } ?>
 
 											</ul>
+											<a href="todosDepoimentos.php" class="button" style="margin-top:5rem;">Ver mais depoimentos</a>
 										</section>
 									
 

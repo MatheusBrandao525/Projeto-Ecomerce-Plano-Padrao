@@ -10,14 +10,10 @@
 
 ?>
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html lang="pt-br" translate="no">
 	<head>
-		<title>Space info</title>
+		<title>Login</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel = " stylesheet " href = " https://use.fontawesome.com/079d72ad8e.css " >
@@ -29,22 +25,22 @@
 		<div id="page-wrapper">
 
 			<!-- Header -->
-				<section id="header" style="max-height:100px;">
+				<section id="header" style="max-height:120px;">
 					<div class="container" style="max-height:100px;">
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
 									<li><a class="icon solid fa-home" href="index.php"><span>Home</span></a></li>
 									<li>
-										<a href="#" class="icon solid fa-sitemap"><span>Categorias</span></a>
+										<a href="#" class="icon solid fa-layer-group"><span>Categorias</span></a>
 										<ul>
 										<?php while($exibeCat = $consultaCat->fetch(PDO::FETCH_ASSOC)) { ?>
 											<li><a href="categoria.php?cat=<?php echo $exibeCat['id_categoria'];?>"><?php echo $exibeCat['nome_categoria'];?></a></li>
 										<?php } ?>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Produtos</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-box" href="left-sidebar.php"><span>Serviços</span></a></li>
+									<li><a class="icon solid fa-info" href="right-sidebar.php"><span>Sobre nós</span></a></li>
 									<li><a class="icon solid fa-cog" href="no-sidebar.php"><span>Entrar</span></a></li>
 								</ul>
 							</nav>
@@ -62,7 +58,7 @@
 									<header>
 										<h2>Faça login</h2>
 									</header>
-									<form name="frmusuario" method="post" action="validauser.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+									<form name="frmusuario" method="post" action="validaUser.php" class="frmlogin" style="display: flex; justify-content: center; align-items: center; text-align: center;">
 										<div class="row gtr-50">
 											<div class="col-12 col-12-small" style="display: flex; justify-content: center;">
 												<input name="txtnome" placeholder="Nome" type="text" style="max-width: 350px;" required/>
